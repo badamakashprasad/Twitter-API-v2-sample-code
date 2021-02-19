@@ -40,10 +40,10 @@ def delete_all_rules(headers, bearer_token, rules):
                 response.status_code, response.text
             )
         )
-    print(json.dumps(response.json()))
+    print(f'Delete all rule | payload : {payload} | Response : \n{json.dumps(response.json())}')
 
 
-def set_rules(headers, delete, bearer_token):
+def set_rules(headers, bearer_token):
     # You can adjust the rules if needed
     sample_rules = [
         {"value": "dog has:images", "tag": "dog pictures"},
@@ -59,10 +59,10 @@ def set_rules(headers, delete, bearer_token):
         raise Exception(
             "Cannot add rules (HTTP {}): {}".format(response.status_code, response.text)
         )
-    print(json.dumps(response.json()))
+    print(f'Set rules | payload : {payload} | Response : \n{json.dumps(response.json())}')
 
 
-def get_stream(headers, set, bearer_token):
+def get_stream(headers , bearer_token):
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream", headers=headers, stream=True,
     )
